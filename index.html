@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<div class="home">
+
+<h1 class="page-heading">Welcome!</h1>
+
+<img src = '/images/jmr_headshot.jpg' alt = 'jmr_headshot' align = 'right'>
+
+<p>My name is Joshua Rosenberg and I'm a Ph.D. Candidate in <a href = 'http://edutech.educ.msu.edu/programs/doctoral/'>Educational Psychology and Educational Technology</a> at <a href = 'http://msu.edu'>Michigan State University</a>.  I research and teach about science teaching and learning, data in education, and educational technologies.
+
+<h1 class="page-heading">Recent Blog Posts</h1>
+
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li>
+      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+      <h2>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a>
+      </h2>
+    </li>
+  {% endfor %}
+</ul>
+
+<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>
