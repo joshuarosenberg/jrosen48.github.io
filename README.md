@@ -1,2 +1,2 @@
-# joshuarosenberg.github.io
-Personal and professional homepage
+jrosen.github.io
+Personal homepage
