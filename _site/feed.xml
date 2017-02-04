@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-02-04T17:19:16-05:00</updated><id>http://localhost:4000//</id><title type="html">Joshua M. Rosenberg</title><subtitle>I'm a Ph.D. Candidate in Educational Psychology &amp; Educational Technology at Michigan State University.
+</subtitle><author><name>Joshua M. Rosenberg</name></author><entry><title type="html">How much do we spend weekly on Groceries? Figuring out using R and Mint (Updated)</title><link href="http://localhost:4000/r/2017/01/17/exploring-mint-r.html" rel="alternate" type="text/html" title="How much do we spend weekly on Groceries? Figuring out using R and Mint (Updated)" /><published>2017-01-17T05:16:00-05:00</published><updated>2017-01-17T05:16:00-05:00</updated><id>http://localhost:4000/r/2017/01/17/exploring-mint-r</id><content type="html" xml:base="http://localhost:4000/r/2017/01/17/exploring-mint-r.html">&lt;p&gt;We started using &lt;a href=&quot;https://www.mint.com/&quot;&gt;Mint&lt;/a&gt; to keep track of our spending. One of the best features of Mint is the ability to see past patterns of spending (and to use that information to not spend quite as much on, well, coffee, and for those who know me well, sandwiches from &lt;a href=&quot;http://woodysoasis.com/&quot;&gt;Woody’s Oasis&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;I listened to an episode of the &lt;a href=&quot;https://www.google.com/search?q=not+so+standard+deviations&amp;amp;oq=not+so+standard+deviations&amp;amp;aqs=chrome..69i57.3238j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot;&gt;Not So Standard Deviations&lt;/a&gt;, in which the hosts Peng and Parker discussed using spreadsheets and &lt;a href=&quot;https://cran.r-project.org/&quot;&gt;R&lt;/a&gt; to keep track of information for taxes.&lt;/p&gt;
+
+&lt;p&gt;This sparked my interest, and I checked Mint to see whether they offered the option to export information from it in any way, shape, or form. They &lt;a href=&quot;https://mint.lc.intuit.com/questions/951225-how-can-i-export-data-from-mint&quot;&gt;do&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;In short, “At the end of the page containing a list of transactions there is a link ‘Export all xxxx transactions’.”&lt;/p&gt;
+
+&lt;p&gt;Easy enough. I did it.&lt;/p&gt;
+
+&lt;p&gt;I then loaded up R and prepared the data (the name of the file should be the same, although if it is in a folder other than Downloads, you’ll have to change that – otherwise, this should work for you):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;library(tidyverse) # if not yet installed, use &quot;install.packages(&quot;tidyverse&quot;)&quot; the first time you use the package
+library(stringr) # same for &quot;install.packages(&quot;stringr&quot;)&quot;; only necessary first time
+library(lubridate) # same for &quot;install.packages(&quot;lubridate&quot;)
+
+df &amp;lt;- read_csv(&quot;~/downloads/transactions.csv&quot;)
+df$Date &amp;lt;- mdy(df$Date)
+df$date_r &amp;lt;- round_date(df$Date, &quot;week&quot;)
+df$wday &amp;lt;- wday(df$Date, label = T)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I thought Meijer – our grocery store – would be interesting to look at as a first step:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;term &amp;lt;- &quot;Meijer&quot;
+df_ss &amp;lt;- filter(df, str_detect(Description, term))
+
+ggplot(df_ss, aes(x = date_r, y = Amount)) +
+      geom_col() +
+      geom_smooth(color = &quot;red&quot;, se = F) +
+      ggtitle(paste(&quot;Amount of Money Spent at&quot;, term)) +
+      ylab(&quot;Amount ($) Per Week&quot;) +
+      xlab(NULL) +
+      scale_x_date(date_breaks = &quot;3 months&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here’s the results (with a &lt;a href=&quot;https://en.wikipedia.org/wiki/Local_regression&quot;&gt;smooth curve&lt;/a&gt; fit to the data):&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://photos.google.com/share/AF1QipPN8OqeOAWFaTxJDbmwM-RB3rIb_liG3iFCK1yyN0tUBliFntykrqlvtj3WHsmLhA?key=eTBaWndVNVJVb3k2LVFJeGtqb0w5TmNueFp1cUFR&amp;amp;source=ctrlq.org&quot;&gt;&lt;img src=&quot;https://lh3.googleusercontent.com/5-Azt06KReg33R_FMREcvkznJfqQd87IDQ7j6a1WcmSozOECO-ekl9OrHmLFNw3Sg_tVs3RdtpvRCegSX8sTE8jJNYCoI7KsG6GiqKrJdqWgEOBujG3DC6acgIyAy-K04cGvY2o&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;One thing that surprised us is how consistently we spend around $50 / week, because in summer. Perhaps we’re purchasing other (non-grocery) items in the winter? Not sure - and perhaps not something available through Mint’s data. Nevertheless, the takeaway from this (or at least one) is that the data Mint and other companies is not, or at least does not have to be, something “out there,” but rather is ours, so we can, sometimes, get our hands on it and maybe learn something potentially worth knowing.&lt;/p&gt;
+
+&lt;p&gt;My cousin Jacob pushed me to consider why I used R (instead of just using Mint or doing it in some other way, such as through &lt;a href=&quot;http://sheets.google.com&quot;&gt;Google Sheets&lt;/a&gt;). It was a good comment, and eventually I ended up here: data are not often cleaned, aggregated, or ready to go in terms of creating a plot or using a model, and R is good for cleaning and aggregating (and plotting and modeling) data.&lt;/p&gt;</content><author><name>Joshua M. Rosenberg</name></author><summary type="html">We started using Mint to keep track of our spending. One of the best features of Mint is the ability to see past patterns of spending (and to use that information to not spend quite as much on, well, coffee, and for those who know me well, sandwiches from Woody’s Oasis).</summary></entry><entry><title type="html">Announcing clustRcompaR v.0.1.0</title><link href="http://localhost:4000/tools/2017/01/07/clustrcompar-0.1.0.html" rel="alternate" type="text/html" title="Announcing clustRcompaR v.0.1.0" /><published>2017-01-07T10:16:00-05:00</published><updated>2017-01-07T10:16:00-05:00</updated><id>http://localhost:4000/tools/2017/01/07/clustrcompar-0.1.0</id><content type="html" xml:base="http://localhost:4000/tools/2017/01/07/clustrcompar-0.1.0.html">&lt;p&gt;Alex Lishinski and I worked on an &lt;code class=&quot;highlighter-rouge&quot;&gt;R&lt;/code&gt; package over the last year or so. We are excited that it’s now available on &lt;a href=&quot;https://cran.r-project.org/web/packages/clustRcompaR/index.html&quot;&gt;CRAN&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can install the package using &lt;code class=&quot;highlighter-rouge&quot;&gt;install.packages('clustRcompaR')&lt;/code&gt; (only needed first time) and load it (more on its two functions below) using &lt;code class=&quot;highlighter-rouge&quot;&gt;library(clustRcompaR)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here’s a description:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Provides an interface to perform cluster analysis on a corpus of text. Interfaces to Quanteda to assemble text corpuses easily. Deviationalizes text vectors prior to clustering using technique described by Sherin (Sherin, B. [2013]. A computational study of commonsense science: An exploration in the automated analysis of clinical interview data. Journal of the Learning Sciences, 22(4), 600-638. Chicago. http://dx.doi.org/10.1080/10508406.2013.836654). Uses cosine similarity as distance metric for two stage clustering process, involving Ward’s algorithm hierarchical agglomerative clustering, and k-means clustering. Selects optimal number of clusters to maximize “variance explained” by clusters,, adjusted by the number of clusters. Provides plotted output of clustering results as well as printed output. Assesses “model fit” of clustering solution to a set of preexisting groups in dataset.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I learned about document clustering and this approach by Christina Krist, who introduced me to to the paper cited (and referenced) in the description. It is straightforward but powerful in light of other approaches like &lt;a href=&quot;https://cran.r-project.org/web/packages/topicmodels/vignettes/topicmodels.pdf&quot;&gt;topic modeling&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here’s more background:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Document_clustering&quot;&gt;Document clustering&lt;/a&gt; is a common technique to discover topics in a corpus of texts. This package uses functions from the &lt;a href=&quot;https://github.com/kbenoit/quanteda&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;quanteda&lt;/code&gt;&lt;/a&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;R&lt;/code&gt; package as the basis for two functions, &lt;code class=&quot;highlighter-rouge&quot;&gt;cluster()&lt;/code&gt; and `compare(), to make document clustering and comparing topics identified through document clustering across factors straightforward.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;First, use &lt;code class=&quot;highlighter-rouge&quot;&gt;cluster()&lt;/code&gt; on a &lt;code class=&quot;highlighter-rouge&quot;&gt;data.frame&lt;/code&gt; with the first column a &lt;code class=&quot;highlighter-rouge&quot;&gt;vector&lt;/code&gt; of character strings, and any other columns are &lt;code class=&quot;highlighter-rouge&quot;&gt;vectors&lt;/code&gt; of &lt;code class=&quot;highlighter-rouge&quot;&gt;factors&lt;/code&gt; (such as groups representing different time points and classes taught by different teachers).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Next, use &lt;code class=&quot;highlighter-rouge&quot;&gt;compare()&lt;/code&gt; with the output from the &lt;code class=&quot;highlighter-rouge&quot;&gt;cluster()&lt;/code&gt; function along with a &lt;code class=&quot;highlighter-rouge&quot;&gt;string&lt;/code&gt; for the factor to compare the frequency of clusters to.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you happen to use it and would like to suggest improvements, have any issues, or make changes, all of the contents are &lt;a href=&quot;https://github.com/alishinski/clustRcompaR&quot;&gt;available on GitHub&lt;/a&gt;.&lt;/p&gt;</content><author><name>Joshua M. Rosenberg</name></author><summary type="html">Alex Lishinski and I worked on an R package over the last year or so. We are excited that it’s now available on CRAN.</summary></entry><entry><title type="html">Wordpress Archive</title><link href="http://localhost:4000/archive/2017/01/07/wordpress-archive.html" rel="alternate" type="text/html" title="Wordpress Archive" /><published>2017-01-07T09:50:40-05:00</published><updated>2017-01-07T09:50:40-05:00</updated><id>http://localhost:4000/archive/2017/01/07/wordpress-archive</id><content type="html" xml:base="http://localhost:4000/archive/2017/01/07/wordpress-archive.html">&lt;p&gt;I moved my Wordpress blog to Wordpress.com as an archive and so I would not need to pay to maintain the self-hosted site. The link is &lt;a href=&quot;https://jmichaelrosenbergblog.wordpress.com/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</content><author><name>Joshua M. Rosenberg</name></author><summary type="html">I moved my Wordpress blog to Wordpress.com as an archive and so I would not need to pay to maintain the self-hosted site. The link is here.</summary></entry><entry><title type="html">From Wordpress to GitHub Pages</title><link href="http://localhost:4000/jekyll/update/2017/01/04/from-wordpress-to-github-pages.markdown.html" rel="alternate" type="text/html" title="From Wordpress to GitHub Pages" /><published>2017-01-04T11:32:40-05:00</published><updated>2017-01-04T11:32:40-05:00</updated><id>http://localhost:4000/jekyll/update/2017/01/04/from-wordpress-to-github-pages.markdown</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2017/01/04/from-wordpress-to-github-pages.markdown.html">&lt;p&gt;I have used &lt;a href=&quot;http://wordpress.org&quot;&gt;Wordpress&lt;/a&gt; for more than seven years. Over that time, I’ve used multiple shared servers, and have had a myriad of domain names.&lt;/p&gt;
+
+&lt;p&gt;Most recently, my shared server at Lansing, MI-based &lt;a href=&quot;https://www.liquidweb.com/&quot;&gt;Liquid Web&lt;/a&gt; ended, due to Liquid Web leaving the shared hosting business to focus only on dedicated and virtual private servers.&lt;/p&gt;
+
+&lt;p&gt;I started to look for a new hosting company, and slowly started to coalesce around the idea of, well, not having one, and using &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt; instead.&lt;/p&gt;
+
+&lt;p&gt;I already have a number of files on GitHub (&lt;a href=&quot;https://github.com/jrosen48&quot;&gt;here&lt;/a&gt;) and especially like the simplicity of it - and the ability to write in &lt;a href=&quot;https://daringfireball.net/projects/markdown/&quot;&gt;Markdown&lt;/a&gt;, not HTML.&lt;/p&gt;
+
+&lt;p&gt;So that is what I am doing.&lt;/p&gt;</content><author><name>Joshua M. Rosenberg</name></author><summary type="html">I have used Wordpress for more than seven years. Over that time, I’ve used multiple shared servers, and have had a myriad of domain names.</summary></entry></feed>
