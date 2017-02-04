@@ -22,14 +22,14 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jrosenberg6432
 github_username:  jrosen48
 name: Joshua M. Rosenberg
-description: Posts about Educational Psychology, Educational Technology, and Science Education
 url: http://https://jrosen48.github.io/
+author: Joshua M. Rosenberg
 
 # Build settings
 markdown: kramdown
 theme: minima
 gems:
-  - jekyll-feed
+  - octopress-feeds
 exclude:
   - Gemfile
   - Gemfile.lock
