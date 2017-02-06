@@ -14,6 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Joshua M. Rosenberg
+name: Joshua M. Rosenberg
 email: jmichaelrosenberg@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   I'm a Ph.D. Candidate in Educational Psychology & Educational Technology at Michigan State University.
