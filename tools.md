@@ -26,3 +26,6 @@ Links to tools I've developed.
 
 * Diffusion & Temperature - AP Physics 2 (MVS). Modification of Diffusion & Temperature Interactive to output quantitative data about temperature, pressure, and volume. Available from [http://lab.concord.org/interactives.html#interactives/external-projects/msu/temperature-diffusion.json](http://lab.concord.org/interactives.html#interactives/external-projects/msu/temperature-diffusion.json)
 
+### More on tools developed 
+
+* Posts on this blog related to R are occasionally published in the excellent [R-Bloggers](https://www.r-bloggers.com/) feed.
