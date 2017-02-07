@@ -8,11 +8,7 @@
 		
 			<item>
 				<title>How much do we spend weekly on Groceries? Figuring out using R and Mint (Updated)</title>
-				
-					<description>&lt;p&gt;We started using &lt;a href=&quot;https://www.mint.com/&quot;&gt;Mint&lt;/a&gt; to keep track of our spending. One of the best features of Mint is the ability to see past patterns of spending (and to use that information to not spend quite as much on, well, coffee, and for those who know me well, sandwiches from &lt;a href=&quot;http://woodysoasis.com/&quot;&gt;Woody’s Oasis&lt;/a&gt;).&lt;/p&gt;
-
-</description>
-					<content>&lt;p&gt;We started using &lt;a href=&quot;https://www.mint.com/&quot;&gt;Mint&lt;/a&gt; to keep track of our spending. One of the best features of Mint is the ability to see past patterns of spending (and to use that information to not spend quite as much on, well, coffee, and for those who know me well, sandwiches from &lt;a href=&quot;http://woodysoasis.com/&quot;&gt;Woody’s Oasis&lt;/a&gt;).&lt;/p&gt;
+				<content>&lt;p&gt;We started using &lt;a href=&quot;https://www.mint.com/&quot;&gt;Mint&lt;/a&gt; to keep track of our spending. One of the best features of Mint is the ability to see past patterns of spending (and to use that information to not spend quite as much on, well, coffee, and for those who know me well, sandwiches from &lt;a href=&quot;http://woodysoasis.com/&quot;&gt;Woody’s Oasis&lt;/a&gt;).&lt;/p&gt;
 
 &lt;p&gt;I listened to an episode of the &lt;a href=&quot;https://www.google.com/search?q=not+so+standard+deviations&amp;amp;oq=not+so+standard+deviations&amp;amp;aqs=chrome..69i57.3238j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot;&gt;Not So Standard Deviations&lt;/a&gt;, in which the hosts Peng and Parker discussed using spreadsheets and &lt;a href=&quot;https://cran.r-project.org/&quot;&gt;R&lt;/a&gt; to keep track of information for taxes.&lt;/p&gt;
 
@@ -58,7 +54,6 @@ ggplot(df_ss, aes(x = date_r, y = Amount)) +
 
 &lt;p&gt;My cousin Jacob pushed me to consider why I used R (instead of just using Mint or doing it in some other way, such as through &lt;a href=&quot;http://sheets.google.com&quot;&gt;Google Sheets&lt;/a&gt;). It was a good comment, and eventually I ended up here: data are not often cleaned, aggregated, or ready to go in terms of creating a plot or using a model, and R is good for cleaning and aggregating (and plotting and modeling) data.&lt;/p&gt;
 </content>
-				
 				<pubDate>Tue, 17 Jan 2017 05:16:00 -0500</pubDate>
 				<link>http://localhost:4000/r/2017/01/17/exploring-mint-r.html</link>
 				<guid isPermaLink="true">http://localhost:4000/r/2017/01/17/exploring-mint-r.html</guid>
