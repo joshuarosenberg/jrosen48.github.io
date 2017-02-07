@@ -12,6 +12,52 @@
 					<description>&lt;p&gt;We started using &lt;a href=&quot;https://www.mint.com/&quot;&gt;Mint&lt;/a&gt; to keep track of our spending. One of the best features of Mint is the ability to see past patterns of spending (and to use that information to not spend quite as much on, well, coffee, and for those who know me well, sandwiches from &lt;a href=&quot;http://woodysoasis.com/&quot;&gt;Woody’s Oasis&lt;/a&gt;).&lt;/p&gt;
 
 </description>
+					<content>&lt;p&gt;We started using &lt;a href=&quot;https://www.mint.com/&quot;&gt;Mint&lt;/a&gt; to keep track of our spending. One of the best features of Mint is the ability to see past patterns of spending (and to use that information to not spend quite as much on, well, coffee, and for those who know me well, sandwiches from &lt;a href=&quot;http://woodysoasis.com/&quot;&gt;Woody’s Oasis&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;I listened to an episode of the &lt;a href=&quot;https://www.google.com/search?q=not+so+standard+deviations&amp;amp;oq=not+so+standard+deviations&amp;amp;aqs=chrome..69i57.3238j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot;&gt;Not So Standard Deviations&lt;/a&gt;, in which the hosts Peng and Parker discussed using spreadsheets and &lt;a href=&quot;https://cran.r-project.org/&quot;&gt;R&lt;/a&gt; to keep track of information for taxes.&lt;/p&gt;
+
+&lt;p&gt;This sparked my interest, and I checked Mint to see whether they offered the option to export information from it in any way, shape, or form. They &lt;a href=&quot;https://mint.lc.intuit.com/questions/951225-how-can-i-export-data-from-mint&quot;&gt;do&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;In short, “At the end of the page containing a list of transactions there is a link ‘Export all xxxx transactions’.”&lt;/p&gt;
+
+&lt;p&gt;Easy enough. I did it.&lt;/p&gt;
+
+&lt;p&gt;I then loaded up R and prepared the data (the name of the file should be the same, although if it is in a folder other than Downloads, you’ll have to change that – otherwise, this should work for you):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;library(tidyverse) # if not yet installed, use &quot;install.packages(&quot;tidyverse&quot;)&quot; the first time you use the package
+library(stringr) # same for &quot;install.packages(&quot;stringr&quot;)&quot;; only necessary first time
+library(lubridate) # same for &quot;install.packages(&quot;lubridate&quot;)
+
+df &amp;lt;- read_csv(&quot;~/downloads/transactions.csv&quot;)
+df$Date &amp;lt;- mdy(df$Date)
+df$date_r &amp;lt;- round_date(df$Date, &quot;week&quot;)
+df$wday &amp;lt;- wday(df$Date, label = T)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I thought Meijer – our grocery store – would be interesting to look at as a first step:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;term &amp;lt;- &quot;Meijer&quot;
+df_ss &amp;lt;- filter(df, str_detect(Description, term))
+
+ggplot(df_ss, aes(x = date_r, y = Amount)) +
+      geom_col() +
+      geom_smooth(color = &quot;red&quot;, se = F) +
+      ggtitle(paste(&quot;Amount of Money Spent at&quot;, term)) +
+      ylab(&quot;Amount ($) Per Week&quot;) +
+      xlab(NULL) +
+      scale_x_date(date_breaks = &quot;3 months&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here’s the results (with a &lt;a href=&quot;https://en.wikipedia.org/wiki/Local_regression&quot;&gt;smooth curve&lt;/a&gt; fit to the data):&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://photos.google.com/share/AF1QipPN8OqeOAWFaTxJDbmwM-RB3rIb_liG3iFCK1yyN0tUBliFntykrqlvtj3WHsmLhA?key=eTBaWndVNVJVb3k2LVFJeGtqb0w5TmNueFp1cUFR&amp;amp;source=ctrlq.org&quot;&gt;&lt;img src=&quot;https://lh3.googleusercontent.com/5-Azt06KReg33R_FMREcvkznJfqQd87IDQ7j6a1WcmSozOECO-ekl9OrHmLFNw3Sg_tVs3RdtpvRCegSX8sTE8jJNYCoI7KsG6GiqKrJdqWgEOBujG3DC6acgIyAy-K04cGvY2o&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;One thing that surprised us is how consistently we spend around $50 / week, because in summer. Perhaps we’re purchasing other (non-grocery) items in the winter? Not sure - and perhaps not something available through Mint’s data. Nevertheless, the takeaway from this (or at least one) is that the data Mint and other companies is not, or at least does not have to be, something “out there,” but rather is ours, so we can, sometimes, get our hands on it and maybe learn something potentially worth knowing.&lt;/p&gt;
+
+&lt;p&gt;My cousin Jacob pushed me to consider why I used R (instead of just using Mint or doing it in some other way, such as through &lt;a href=&quot;http://sheets.google.com&quot;&gt;Google Sheets&lt;/a&gt;). It was a good comment, and eventually I ended up here: data are not often cleaned, aggregated, or ready to go in terms of creating a plot or using a model, and R is good for cleaning and aggregating (and plotting and modeling) data.&lt;/p&gt;
+</content>
 				
 				<pubDate>Tue, 17 Jan 2017 05:16:00 -0500</pubDate>
 				<link>http://localhost:4000/r/2017/01/17/exploring-mint-r.html</link>
