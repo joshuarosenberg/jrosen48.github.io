@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Introducing prcr for person-centered analysis in R(v. 0.1.0)"
+title:  "Introducing the prcr package for person-centered analysis in R"
 date:   2017-02-17 16:59:00 -0500
 categories: R 
 ---
 
-I'm excited to introduce `prcr`, an R package for person-centered analysis. 
+I'm excited to introduce `prcr` (v. 0.1.0), an R package for person-centered analysis. 
 
 The package is available on CRAN via `install.packages("prcr")`. 
 
