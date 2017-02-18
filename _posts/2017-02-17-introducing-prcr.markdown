@@ -5,7 +5,7 @@ date:   2017-02-17 16:59:00 -0500
 categories: R 
 ---
 
-I'm excited to share that `prcr` (v. 0.1.0), an R package for person-centered analysis, is now available on CRAN via `install.packages("prcr")`.
+I'm excited to share that `prcr` (0.1.0), an R package for person-centered analysis, is now available on CRAN via `install.packages("prcr")`.
 
 Person-centered analyses focus on clusters, or profiles, of observations, and their change over time or differences across factors. 
 
