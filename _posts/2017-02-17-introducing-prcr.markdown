@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The prcr package for person-centered analysis in R"
+title:  "prcr: An R Package for Person-Centered Analysis"
 date:   2017-02-17 16:59:00 -0500
 categories: R 
 ---
