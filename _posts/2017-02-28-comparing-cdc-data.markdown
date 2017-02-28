@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Is the flu really worse this year? Comparing across years"
+title:  "Is the flu really worse this year? Comparing the (ongoing) 2016-17 and 2015-16 flu seasons"
 date:   2017-02-28 09:28:00 -0500
 categories: R 
 ---
