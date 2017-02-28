@@ -30,3 +30,10 @@ The data is from [this CDC page](https://www.cdc.gov/flu/weekly/fluviewinteracti
 I used the new (and in-development) [gganimate package](https://github.com/dgrtwo/gganimate) to create the GIF. The basic idea is to create a `ggplot`, and then add an aesthetic for the `Frame`, which represents the change between frames in the plot, which in this case is the week.
 
 This project is just a first attempt but the code for it is available in [a GitHub repository](https://github.com/jrosen48/cdc-flu-vis).
+
+## Conclusion
+
+It looks like the flu was about equal during the 2016-17 and 2015-16 seasons in terms of level of activity until New Years Eve; in most of the country, flu activity was much higher during the first seven weeks of 2016-17 season compared to the 2015-16 season.
+
+Of course, I think this visualization has implications for educational research. Many times we examine change, but are challenged by how to visualize change over time. This could be one such way.
+
