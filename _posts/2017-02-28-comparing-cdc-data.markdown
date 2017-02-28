@@ -5,9 +5,25 @@ date:   2017-02-28 09:28:00 -0500
 categories: R 
 ---
 
+## Background
+
 I was sick last week, and I think I might have had a mild case of the flu. Since it seems like a lot of people have been sick, I was curious whether the flu was really worse this year than last... and since the CDC makes the data available for each year, I put the data together and created a GIF. The measure of flu activity is from minimal (1-3) to high (8-10) and the scale in the chart is the difference from the 16-17 and 15-16 flu seasons (which range from November - March; it ends in week 7 because that's the most recent data for this year.
 
+## Visualization
+
 ![flu](https://cloud.githubusercontent.com/assets/4596214/23408837/7cb56b9e-fd97-11e6-817d-a9dd743b532e.gif)
+
+## Ways to Improve
+
+This can be improved in a number of ways
+
+* Inclusion of multiple years of data: Why compare only to the past year, rather than the mean of the past 10 years or so? This data is available from the CDC.
+* Adding some kind of test for whether activity is within the normal range or is really worse (or better) than usual. Maybe just a t-test for each state (with the p-value corrected?)?
+* Scale the Activity Level differently: The 1-10 scale is intuitive enough, but when focusing on the difference from one year to the last (or to the mean), the numbers are less meaningful. Maybe a standard deviation works.
+* Improve the aesthetics. I was still learning the `gganimate` package, and so some parts of the plot aren't how I'd like them (i.e., the complete absence of a title, having some difficulty adding a `caption()` layer, the frame rate being too quick.)
+* Downloading the data from the CDC, rather than using the excellent [`cdcfluview` package](https://github.com/hrbrmstr/cdcfluview). I tried this and was able to view National data, but had trouble with state data. I later found out I just added the year wrong (for the 2016-17 year, the most recent year should be `2016` not `2017`).
+
+## More Information
 
 The data is from [this CDC page](https://www.cdc.gov/flu/weekly/fluviewinteractive.htm).
 
