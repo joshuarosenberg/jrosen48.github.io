@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Is the flu really worse this year? Comparing across using using CDC data"
+title:  "Is the flu really worse this year? Comparing across years"
 date:   2017-02-28 09:28:00 -0500
 categories: R 
 ---
