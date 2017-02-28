@@ -20,7 +20,7 @@ This can be improved in a number of ways
 * Inclusion of multiple years of data: Why compare only to the past year, rather than the mean of the past 10 years or so? This data is available from the CDC.
 * Adding some kind of test for whether activity is within the normal range or is really worse (or better) than usual. Maybe just a t-test for each state (with the p-value corrected?)?
 * Scale the Activity Level differently: The 1-10 scale is intuitive enough, but when focusing on the difference from one year to the last (or to the mean), the numbers are less meaningful. Maybe a standard deviation works.
-* Improve the aesthetics. I was still learning the `gganimate` package, and so some parts of the plot aren't how I'd like them (i.e., the complete absence of a title, having some difficulty adding a `caption()` layer, the frame rate being too quick.)
+* Improve the appearance. I was still learning the `gganimate` package, and so some parts of the plot aren't how I'd like them (i.e., the complete absence of a title, having some difficulty adding a `caption()` layer, the frame rate being too quick.)
 * Downloading the data from the CDC, rather than using the excellent [`cdcfluview` package](https://github.com/hrbrmstr/cdcfluview). I tried this and was able to view National data, but had trouble with state data. I later found out I just added the year wrong (for the 2016-17 year, the most recent year should be `2016` not `2017`).
 
 ## More Information
@@ -35,5 +35,5 @@ This project is just a first attempt but the code for it is available in [a GitH
 
 It looks like the flu was about equal during the 2016-17 and 2015-16 seasons in terms of level of activity until New Years Eve; in most of the country, flu activity was much higher during the first seven weeks of 2016-17 season compared to the 2015-16 season.
 
-Of course, I think this visualization has implications for educational research. Many times we examine change, but are challenged by how to visualize change over time. This could be one such way.
+Of course, I think this visualization has implications for educational research. Many times we examine change, but are challenged by how to visualize change over time. The `frame` aesthetic can also be things other than time, like different groups to compare. I'd like to think about how a GIF could be part of a presentation.
 
