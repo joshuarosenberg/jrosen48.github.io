@@ -7,7 +7,7 @@ categories: R
 
 ## Background
 
-I was sick last week, and I think I might have had a mild case of the flu. Since it seems like a lot of people have been sick, I was curious whether the flu was really worse this year than last... and since the CDC makes the data available for each year, I put the data together and created a GIF. The measure of flu activity is from minimal (1-3) to high (8-10) and the scale in the chart is the difference from the 16-17 and 15-16 flu seasons (which range from November - March; it ends in week 7 because that's the most recent data for this year.
+I was sick last week, and I think I might have had a mild case of the flu. Since it seems like a lot of people have been sick, I was curious whether the flu was really worse this year than last... and since the CDC makes the data available for each year, I put the data together and created a GIF. This project is just a first attempt but the code (it's in R) is available in [a GitHub repository](https://github.com/jrosen48/cdc-flu-vis). The measure of flu activity is from minimal (1-3) to high (8-10) and the scale in the chart is the difference from the 16-17 and 15-16 flu seasons (which range from November - March; it ends in week 7 because that's the most recent data for this year.
 
 ## Visualization
 
@@ -15,7 +15,7 @@ I was sick last week, and I think I might have had a mild case of the flu. Since
 
 ## Ways to Improve
 
-This can be improved in a number of ways
+This can be improved in a number of ways (if you think of others, please feel free to adapt this and create your own, and / or please let me know):
 
 * Inclusion of multiple years of data: Why compare only to the past year, rather than the mean of the past 10 years or so? This data is available from the CDC.
 * Adding some kind of test for whether activity is within the normal range or is really worse (or better) than usual. Maybe just a t-test for each state (with the p-value corrected?)?
@@ -29,11 +29,8 @@ The data is from [this CDC page](https://www.cdc.gov/flu/weekly/fluviewinteracti
 
 I used the new (and in-development) [gganimate package](https://github.com/dgrtwo/gganimate) to create the GIF. The basic idea is to create a `ggplot`, and then add an aesthetic for the `Frame`, which represents the change between frames in the plot, which in this case is the week.
 
-This project is just a first attempt but the code for it is available in [a GitHub repository](https://github.com/jrosen48/cdc-flu-vis).
-
 ## Conclusion
 
-It looks like the flu was about equal during the 2016-17 and 2015-16 seasons in terms of level of activity until New Years Eve; in most of the country, flu activity was much higher during the first seven weeks of 2016-17 season compared to the 2015-16 season.
+It looks like the level of flu activity was about equal during the 2016-17 and 2015-16 seasons *until* New Years Eve; in most of the country, flu activity was much higher during the first seven weeks of 2016-17 season compared to the 2015-16 season. So, it does look like the flu really is worse this year, although we'll have to see how the rest of the season pans out. I'll try to update the post then.
 
-Of course, I think this visualization has implications for educational research. Many times we examine change, but are challenged by how to visualize change over time. The `frame` aesthetic can also be things other than time, like different groups to compare. I'd like to think about how a GIF could be part of a presentation.
-
+Of course, I think this visualization has some implications for educational research (and research in other areas). Many times (in education) we examine change, but are challenged by how to visualize change over time. The `frame` aesthetic can also be things other than time, like different groups to compare. I'd like to think about how a GIF could be part of a presentation.

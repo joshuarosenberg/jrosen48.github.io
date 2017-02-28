@@ -8,9 +8,9 @@ Links to tools I've developed.
 
 ### R Packages
 
-* Rosenberg, J. M., & Lishinski, A. (2017). clustRcompaR: Easy interface for clustering a set of documents and exploring group-based patterns. Available from [https://joshuarosenberg.github.io/tools/2017/01/07/clustrcompar-0.1.0.html](https://joshuarosenberg.github.io/tools/2017/01/07/clustrcompar-0.1.0.html) (also available in `R` via `install.packages("clustRcompaR")`)
+* prcr: Person-centered analysis. [https://cran.r-project.org/web/packages/prcr/index.html](https://cran.r-project.org/web/packages/prcr/index.html)
 
-* prcr: R package for person-centered analysis. Available from [https://github.com/jrosen48/prcr](https://github.com/jrosen48/prcr)
+* Rosenberg, J. M., & Lishinski, A. (2017). clustRcompaR: Easy interface for clustering a set of documents and exploring group-based patterns. Available from [https://joshuarosenberg.github.io/tools/2017/01/07/clustrcompar-0.1.0.html](https://joshuarosenberg.github.io/tools/2017/01/07/clustrcompar-0.1.0.html) 
 
 * csvsplittr: Function in R package to split a large CSV into a specified number of smaller CSV Files. Available from [https://github.com/jrosen48/csvsplittr](https://github.com/jrosen48/csvsplittr)
 

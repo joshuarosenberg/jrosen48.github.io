@@ -8,7 +8,7 @@ Links to publications.
 
 ### Journal Articles
 
-Koehler, M. J., Greenhalgh, S. P., Rosenberg, M. J., & Keenan, S. (in press). What the tech is going on with digital teaching portfolios? Using the TPACK framework to analyze teachers’ technological understanding. Journal of Technology and Teacher Education.
+Koehler, M. J., Greenhalgh, S. P., Rosenberg, M. J., & Keenan, S. (2017). What the tech is going on with digital teaching portfolios? Using the TPACK framework to analyze teachers’ technological understanding. Journal of Technology and Teacher Education, 25, 31-59.
 
 Greenhalgh, S. P., Rosenberg, J. M., & Wolf, L. G. (2016). For all intents and purposes: Twitter as a foundational technology for teachers. E-Learning and Digital Media, 13(1-2), 81-98. [http://dx.doi.org/10.1177/2042753016672131](http://dx.doi.org/10.1177/2042753016672131) [pre-print]()
 
