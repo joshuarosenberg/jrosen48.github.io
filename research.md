@@ -12,6 +12,8 @@ My research focuses on a) data-intensive approaches to understanding students' m
 
 * Exploring Student Engagement in Science with a Person-in-Context Approach
 
+* Supporting Student Engagement in Online Science Classes
+
 ### Students' Work with Data
 
 * Creating and Analyzing Data from Simulations: High School Physics Students’ Modeling Simulated Data to Make Sense of Scientific Phenomena
