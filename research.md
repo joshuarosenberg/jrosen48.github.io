@@ -14,6 +14,8 @@ My research focuses on a) data-intensive approaches to understanding students' m
 
 * Supporting Student Engagement in Online Science Classes
 
+* Automated Approaches to Understanding Students' Epistemic Considerations
+
 ### Students' Work with Data
 
 * Creating and Analyzing Data from Simulations: High School Physics Students’ Modeling Simulated Data to Make Sense of Scientific Phenomena
@@ -23,8 +25,6 @@ My research focuses on a) data-intensive approaches to understanding students' m
 * Teachers' Synchronous and Asynchronous Uses of the Same Twitter Hashtag
 
 * An Influence Model of Teachers' Interactions on Twitter
-
-* Automated Approaches to Understanding Students' Epistemic Considerations
 
 * Teachers' Use of Scientific Modeling Over a Long Period of Time
 
